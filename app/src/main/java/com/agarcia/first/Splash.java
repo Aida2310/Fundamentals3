@@ -21,7 +21,7 @@ public class Splash extends AppCompatActivity {
 
         //implements and starts animation
         // objeto thunder sobre el cual aplicaremos la animación
-        ImageView thunder = findViewById(R.id.log);
+        ImageView thunder = findViewById(R.id.logosplash);
 
         //creamos un objeto animación que incorpora la animación descrita en el xml y con el método
         // startAnimation lo aplicamos al imageview del logo
@@ -46,7 +46,7 @@ public class Splash extends AppCompatActivity {
 
 
             }
-        }, 5000);
+        }, 3000);
 
 
     }
