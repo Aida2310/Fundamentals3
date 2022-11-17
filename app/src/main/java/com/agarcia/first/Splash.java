@@ -4,19 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
-   TextView vinculo;
+
+public class Splash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_splash);
+        openApp();
 
 
         //implements and starts animation
@@ -28,27 +28,27 @@ public class LoginActivity extends AppCompatActivity {
         Animation myanim = AnimationUtils.loadAnimation(this, R.anim.fadein);
         thunder.startAnimation(myanim);
 
+    }
 
-        vinculo=findViewById(R.id.textosu);
-        Intent intent= getIntent();
-        vinculo.setOnClickListener(new View.OnClickListener() {
+    private void openApp() {
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable()
+        {
             @Override
-            public void onClick(View view) {
-                openMain();
+            public void run() {
+                Intent intent = new Intent(Splash
+                        .this, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+
+
+
             }
-        });
-    }
-    public void openMain(){
-
-    Intent intent= new Intent(this, SignActivity.class);
-
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-        startActivity(intent);
-
-
+        }, 5000);
 
 
     }
+
 }
